@@ -11,7 +11,7 @@ using MVCDemo.Models;
 
 namespace MVCDemo.Areas.Admin.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         // GET: Admin/Admin
         public ActionResult Index()

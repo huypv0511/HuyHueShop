@@ -29,14 +29,14 @@ namespace MVCDemo.Controllers
                 {
                     var dao = new UserDao();
                     var result = dao.Login(model.UserName, Encryption.MD5Hash(model.PassWord));
-                    if (result)
+                    if (result == 1)
                     {
                         var user = dao.GetByUserName(model.UserName);
                         var userSession = new UserLogin();
                         userSession.UserName = user.Username;
                         userSession.UserID = user.ID;
                         Session.Add(CommonConstants.USER_SESSION, userSession);
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Guess", "Home");
                     }
                     else
                     {
@@ -51,6 +51,12 @@ namespace MVCDemo.Controllers
                 
             }
             return View("Index");
+        }
+        public ActionResult Logout()
+        {
+            Session[CommonConstants.USER_SESSION] = null;
+            Session[CommonConstants.CART_SESSION] = null;
+            return Redirect("/");
         }
         [HttpPost]
         public ActionResult Register(Register model)

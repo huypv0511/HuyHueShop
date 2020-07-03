@@ -6,12 +6,18 @@ using System.Web.Mvc;
 
 namespace MVCDemo.Areas.Admin.Controllers
 {
-    public class HomeController : BaseController
+    public class HomeController : Controller
     {
         // GET: Admin/Home
         public ActionResult Index()
         {
             return View();
+        }
+
+        [ChildActionOnly]
+        public ActionResult PrimaryMenu()
+        {
+            return PartialView();
         }
     }
 }

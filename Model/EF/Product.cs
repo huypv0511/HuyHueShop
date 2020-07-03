@@ -24,7 +24,6 @@ namespace Model.EF
 
         public decimal? PromotionPice { get; set; }
 
-        [Column(TypeName = "xml")]
         public string MoreImages { get; set; }
 
         public int Quantity { get; set; }

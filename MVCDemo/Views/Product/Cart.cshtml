@@ -1,0 +1,251 @@
+﻿@model IEnumerable<MVCDemo.Models.CartModel>
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<body class="stretched">
+    <section id="page-title">
+
+        <div class="container clearfix">
+            <h1>Giỏ hàng</h1>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="@Url.Action("Guess", "Home")">Sản phẩm</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Giỏ hàng</li>
+            </ol>
+        </div>
+
+    </section><!-- #page-title end -->
+    <section id="content">
+
+        <div class="content-wrap">
+
+            <div class="container clearfix">
+                <div class="table-responsive">
+                    <table class="table cart">
+                        <thead>
+                            <tr>
+                                <th class="cart-product-thumbnail">&nbsp;</th>
+                                <th class="cart-product-name">Sản phẩm</th>
+                                <th class="cart-product-price">Giá</th>
+                                <th class="cart-product-quantity">Số lượng(Kg)</th>
+                                <th class="cart-product-subtotal">Tổng tiền</th>
+                                <th class="cart-product-remove">&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.ToList().Count == 0)
+                            {
+                                <tr class="cart_item">
+                                    <td colspan="3">
+                                    </td>
+                                    <td colspan="6">
+                                        <div class="row clearfix">
+                                            <div class="col-lg-4 col-4 nopadding">
+                                                <div class="row">
+                                                    <div class="col-lg-8 col-7">
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <code>Giỏ hàng hiện tại đang trống !</code>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="cart_item">
+                                    <td colspan="6">
+                                        <div class="row clearfix">
+                                            <div class="col-lg-4 col-4 nopadding">
+                                                <div class="row">
+                                                    <div class="col-lg-8 col-7">
+                                                        <input type="text" value="" class="sm-form-control" placeholder="Enter Coupon Code.." />
+                                                    </div>
+                                                    <div class="col-lg-4 col-5">
+                                                        <a href="#" class="button  button-border button-rounded button-fill fill-from-left button-black nomargin"><span>Phiếu giảm giá</span></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-8 col-8 nopadding">
+                                                <button onclick="DeleteAll()" class="button button-border button-rounded button-fill fill-from-bottom button-red fright"><span>Xóa giỏ hàng</span></button>
+                                                <button onclick="Continuee()" class="button button-border button-rounded button-fill fill-from-top button-blue fright"><span>Tiếp tục mua</span></button>
+                                                <button id="btnProceed" class="button button-border button-rounded button-fill fill-from-right button-green fright"><span>Thanh toán</span></button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                            else
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr class="cart_item">
+
+
+                                        <td class="cart-product-thumbnail">
+                                            <a href="#"><img width="64" height="64" src="@item.Product.Image" alt="@item.Product.Name"></a>
+                                        </td>
+
+                                        <td class="cart-product-name">
+                                            <a href="#">@item.Product.Name</a>
+                                        </td>
+
+                                        <td class="cart-product-price">
+                                            <span class="amount">@item.Product.PromotionPice.Value.ToString("N0") đ</span>
+                                        </td>
+
+                                        <td class="cart-product-quantity">
+                                            <div class="quantity clearfix" id="listQuantity">
+                                                @*<input type="button" value="-" onclick="TruQuantity(@item.Product.ID)" class="minus">*@
+                                                <input type="number" min="1" max="@item.Product.Quantity" data-id="@item.Product.ID" onchange="GetQuantity()" name="quantity" value="@item.Quantity" class="qty" />
+                                                @*<input type="button" value="+" onclick="CongQuantity(@item.Product.ID)" class="plus">*@
+                                            </div>
+                                        </td>
+
+                                        <td class="cart-product-subtotal">
+                                            <input readonly class="pricePro" style="display:none" value="@(item.Product.PromotionPice.GetValueOrDefault(0)*item.Quantity)">@((item.Product.PromotionPice.GetValueOrDefault(0)*item.Quantity).ToString("N0"))đ
+                                        </td>
+                                        <td class="cart-product-remove">
+                                            <a href="#" onclick="Delete(@item.Product.ID)" class="remove" title="Xóa sản phẩm"><i class="icon-trash2"></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                                <tr class="cart_item">
+
+
+                                    <td class="cart-product-thumbnail">
+                                        
+                                    </td>
+
+                                    <td class="cart-product-name">
+                                  
+                                    </td>
+
+                                    <td class="cart-product-price">
+                                  
+                                    </td>
+
+                                    <td class="cart-product-quantity">
+                                        <div class="quantity clearfix" id="listQuantity">
+                                         
+                                        </div>
+                                    </td>
+
+                                    <td class="cart-product-subtotal">
+                                        <span id="amountSum" value="222"></span>
+                                    </td>
+                                    <td class="cart-product-remove">
+                                      
+                                    </td>
+                                </tr>
+                                <tr class="cart_item">
+                                    <td colspan="6">
+                                        <div class="row clearfix">
+                                            <div class="col-lg-4 col-4 nopadding">
+                                                <div class="row">
+                                                    <div class="col-lg-8 col-7">
+                                                       @* <input type="text" value="" class="sm-form-control" placeholder="Enter Coupon Code.." />*@
+                                                    </div>
+                                                    <div class="col-lg-4 col-5">
+                                                        @*<a href="#" class="button  button-border button-rounded button-fill fill-from-left button-black nomargin"><span>Phiếu giảm giá</span></a>*@
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-8 col-8 nopadding">
+                                                <button onclick="DeleteAll()" class="button button-border button-rounded button-fill fill-from-bottom button-red fright"><span>Xóa giỏ hàng</span></button>
+                                                <button onclick="Continuee()" class="button button-border button-rounded button-fill fill-from-top button-blue fright"><span>Tiếp tục mua</span></button>
+                                                <button onclick="Payment()" id="btnProceed" class="button button-border button-rounded button-fill fill-from-right button-green fright"><span>Thanh toán</span></button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var listAmount = $('.pricePro');
+        var amountAll = 0;
+        var amountList = [];
+        $.each(listAmount, function (i, item) {
+            amountList.push({
+                Amount: $(item).val()
+            });
+        })
+        $.each(amountList, function (i, item2) {
+            amountAll += +item2.Amount;
+        })
+        var result = (amountAll / 1000).toFixed(3)+"đ";
+        document.getElementById("amountSum").innerHTML = result;
+    });
+
+    function DeleteAll() {
+        $.ajax({
+            url: '/Product/DeleteAll',
+            dataType: 'json',
+            type: 'POST',
+            success: function (res) {
+                if (res.status == true) {
+                    window.location.reload();
+                }
+            }
+        })
+    }
+    var GetQuantity = function () {
+        var lisProduct = $('.qty');
+        var cartList = [];
+        $.each(lisProduct, function (i, item) {
+            cartList.push({
+                Quantity: $(item).val(),
+                Product: {
+                    ID: $(item).data('id')
+                }
+            });
+        })
+
+        $.ajax({
+            url: '/Product/UpdateCart',
+            data: { cartModel: JSON.stringify(cartList) },
+            dataType: 'json',
+            type: 'POST',
+            success: function (res) {
+                if (res.status == true)
+                {
+                    window.location.reload();
+                }
+            }
+        })
+
+    }
+
+    function Delete(Id) {
+        $.ajax({
+            url: '/Product/Delete',
+            data: { id: Id },
+            dataType: 'json',
+            type: 'POST',
+            success: function (res) {
+                if (res.status == true) {
+                    window.location.reload();
+                }
+            }
+        })
+    }
+    function Continuee() {
+        window.history.go(-1);
+    }
+    function Payment()
+    {
+        window.location.href = "@Url.Action("Payment","Product")";
+    }
+
+</script>

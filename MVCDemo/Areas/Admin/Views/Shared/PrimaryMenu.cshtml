@@ -1,0 +1,51 @@
+﻿
+@{
+    var session = (UserLogin)Session[MVCDemo.Common.CommonConstants.USER_SESSION];
+
+}
+
+@if (session == null)
+{
+    <nav id="primary-menu">
+        <ul>
+            <li><a href="@Url.Action("Index", "Home")"><div>Trang Chủ</div></a></li>
+            <li>@Html.ActionLink("Đăng nhập", "Index", "Login")</li>
+        </ul>
+        <div id="top-cart">
+            <a href="#" id="top-cart-trigger"><i class="icon-shopping-cart"></i></a>
+        </div>
+        <div id="top-search">
+            <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
+            <form action="search.html" method="get">
+                <input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter..">
+            </form>
+        </div><!-- #top-search end -->
+    </nav>
+}
+else
+{
+    var user = new Model.Dao.UserDao().ViewDetail(session.UserID);
+    <nav id="primary-menu">
+        <ul>
+            <li>
+                <a>Số dư: @user.Money.Value.ToString("N0") đ</a>
+            </li>
+            <li>
+                <a href="#"><div>Welcome,@session.UserName</div></a>
+                <ul>
+                    <li>@Html.ActionLink("Đăng xuất", "Logout", "Login")</li>
+                </ul>
+            </li>
+        </ul>
+        <div id="top-cart">
+            <a href="#" id="top-cart-trigger"><i class="icon-shopping-cart"></i></a>
+        </div>
+        <div id="top-search">
+            <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
+            <form action="search.html" method="get">
+                <input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter..">
+            </form>
+        </div><!-- #top-search end -->
+    </nav>
+}
+

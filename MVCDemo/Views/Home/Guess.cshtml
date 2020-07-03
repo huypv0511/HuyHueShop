@@ -1,0 +1,202 @@
+﻿@model MVCDemo.Models.ModelMix
+@using PagedList.Mvc;
+@using PagedList;
+
+@{
+    var session = (UserLogin)Session[MVCDemo.Common.CommonConstants.USER_SESSION];
+    ViewBag.Title = "Guess";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <style>
+        .pagination-container {
+            margin-left: 60%;
+        }
+    </style>
+</head>
+<body class="stretched">
+    <section id="page-title">
+
+        <div class="container clearfix">
+            <h1>Trang chủ</h1>
+            <span>Products with Filter Functionality</span>
+        </div>
+
+    </section><!-- #page-title end -->
+    <section id="content">
+
+        <div class="content-wrap">
+
+            <div class="container clearfix">
+
+                <!-- Post Content
+                ============================================= -->
+                <div class="postcontent nobottommargin col_last">
+
+                    <!-- Shop
+                    ============================================= -->
+                    <div id="shop" class="shop product-3 grid-container clearfix">
+
+                        @foreach (var item in Model.ProductObj)
+                        {
+                            var cate = "theloai" + item.CategoryID;
+                            <div class="product @cate clearfix">
+                                <div class="product-image">
+                                    <a href="/Product/Index/@item.ID"><img src="@item.Image" alt="@item.Name"></a>
+                                    <div class="sale-flash">@item.Code% Off*</div>
+                                    <div class="product-overlay">
+                                        @if (session == null)
+                                        {
+                                            
+                                            <a href="include/ajax/shop-item.html" class="item-quick-view" data-lightbox="ajax"><i class="icon-shopping-cart"></i><span> Add to Cart</span></a>
+
+                                        }
+                                        else
+                                        {
+                                            <a href="#" data-id="@item.ID" onclick="AddItem(@item.ID)" class="add-to-cart"><i class="icon-shopping-cart"></i><span> Add to Cart</span></a>
+
+                                        }
+                                        <a href="include/ajax/shop-item.html" class="item-quick-view" data-lightbox="ajax"><i class="icon-zoom-in2"></i><span> Quick View</span></a>
+                                    </div>
+                                </div>
+                                <div class="product-desc center">
+                                    <div class="product-title"><h3><a href="/Product/Index/@item.ID">@item.Name</a></h3></div>
+                                    <div class="product-price"><del>@item.Price.Value.ToString("N0")</del> <ins>@item.PromotionPice.Value.ToString("N0") đ</ins></div>
+                                    <div class="product-rating">
+                                        <i class="icon-star3"></i>
+                                        <i class="icon-star3"></i>
+                                        <i class="icon-star3"></i>
+                                        <i class="icon-star3"></i>
+                                        <i class="icon-star-half-full"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    </div><!-- #shop end -->
+                </div><!-- .postcontent end -->
+                <!-- Sidebar
+                ============================================= -->
+
+                <div class="sidebar nobottommargin">
+                    <div class="sidebar-widgets-wrap">
+
+                        <div class="widget widget-filter-links clearfix">
+
+                            <h4>Thể loại</h4>
+                            <ul class="custom-filter" data-container="#shop" data-active-class="active-filter">
+                                <li class="widget-filter-reset active-filter"><a href="#" data-filter="*">Clear</a></li>
+                                @foreach (var item in Model.ProductCateObj)
+                                {
+                                    var cate = "theloai" + item.ID;
+                                    <li><a href="#" data-filter=".@cate">@item.Name</a></li>
+                                }
+                                @*<li><a href="#" data-filter=".sf-dress">Dress</a></li>
+                                    <li><a href="#" data-filter=".sf-tshirt">Tshirts</a></li>
+                                    <li><a href="#" data-filter=".sf-pant">Pants</a></li>
+                                    <li><a href="#" data-filter=".sf-sunglass">Sunglasses</a></li>
+                                    <li><a href="#" data-filter=".sf-shoes">Shoes</a></li>
+                                    <li><a href="#" data-filter=".sf-watch">Watches</a></li>*@
+                            </ul>
+
+                        </div>
+
+                        <div class="widget widget-filter-links clearfix">
+
+                            <h4>Sắp xếp</h4>
+                            <ul class="shop-sorting">
+                                <li class="widget-filter-reset active-filter"><a href="#" data-sort-by="original-order">Clear</a></li>
+                                <li><a href="#" data-sort-by="name">Tên sản phẩm.</a></li>
+                                <li><a href="#" data-sort-by="price_lh">Giá: Thấp đến cao.</a></li>
+                                <li><a href="#" data-sort-by="price_hl">Giá: Cao đến thấp.</a></li>
+                            </ul>
+
+                        </div>
+
+                    </div>
+                </div><!-- .sidebar end -->
+            </div>
+            <br />
+            @Html.PagedListPager(Model.ProductObj, i => Url.Action("Guess", "Home", new { i, search = Request.QueryString["search"] }),
+             new PagedListRenderOptions
+             {
+                 LiElementClasses = new string[] { "page-link" },
+
+             }
+            )
+
+        </div>
+
+    </section><!-- #content end -->
+    <script>
+        jQuery(document).ready(function ($) {
+            $('#shop').isotope({
+                transitionDuration: '0.65s',
+                getSortData: {
+                    name: '.product-title',
+                    price_lh: function (itemElem) {
+                        if ($(itemElem).find('.product-price').find('ins').length > 0) {
+                            var price = $(itemElem).find('.product-price ins').text();
+                        } else {
+                            var price = $(itemElem).find('.product-price').text();
+                        }
+
+                        priceNum = price.split("đ");
+
+                        return parseFloat(priceNum[0]);
+                    },
+                    price_hl: function (itemElem) {
+                        if ($(itemElem).find('.product-price').find('ins').length > 0) {
+                            var price = $(itemElem).find('.product-price ins').text();
+                        } else {
+                            var price = $(itemElem).find('.product-price').text();
+                        }
+
+                        priceNum = price.split("đ");
+
+                        return parseFloat(priceNum[0]);
+                    }
+                },
+                sortAscending: {
+                    name: true,
+                    price_lh: true,
+                    price_hl: false
+                }
+            });
+
+            $('.custom-filter:not(.no-count)').children('li:not(.widget-filter-reset)').each(function () {
+                var element = $(this),
+                    elementFilter = element.children('a').attr('data-filter'),
+                    elementFilterContainer = element.parents('.custom-filter').attr('data-container');
+
+                elementFilterCount = Number(jQuery(elementFilterContainer).find(elementFilter).length);
+
+                element.append('<span>' + elementFilterCount + '</span>');
+
+            });
+
+            $('.shop-sorting li').click(function () {
+                $('.shop-sorting').find('li').removeClass('active-filter');
+                $(this).addClass('active-filter');
+                var sortByValue = $(this).find('a').attr('data-sort-by');
+                $('#shop').isotope({ sortBy: sortByValue });
+                return false;
+            });
+        });
+        function AddItem(Id) {
+            $.ajax({
+                    url: '/Product/AddToCart',
+                    data: { productId: Id  , quantity: 1 },
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function (res) {
+                        if (res.status == true) {
+                            window.location.reload();
+                        }
+
+                    }
+                })
+        }
+    </script>
+</body>
+

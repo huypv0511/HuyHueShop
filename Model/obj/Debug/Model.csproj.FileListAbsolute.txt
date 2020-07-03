@@ -1,8 +1,10 @@
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\Model\bin\Debug\Model.dll.config
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\Model\bin\Debug\Model.dll
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\Model\bin\Debug\Model.pdb
+C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\Model\bin\Debug\Common.dll
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\Model\bin\Debug\EntityFramework.dll
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\Model\bin\Debug\Common.pdb
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\Model\bin\Debug\EntityFramework.xml
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\Model\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\Model\obj\Debug\Model.csprojAssemblyReference.cache

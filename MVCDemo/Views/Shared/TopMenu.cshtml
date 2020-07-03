@@ -1,0 +1,77 @@
+﻿@model IEnumerable<MVCDemo.Models.CartModel>
+@{
+    var session = (UserLogin)Session[MVCDemo.Common.CommonConstants.USER_SESSION];
+   
+}
+
+@if (session == null)
+{
+    <nav id="primary-menu">
+        <ul>
+            <li><a href="@Url.Action("Index", "Home")"><div>Trang Chủ</div></a></li>
+            <li>@Html.ActionLink("Đăng nhập", "Index", "Login")</li>
+        </ul>
+        <div id="top-cart">
+            <a href="#" id="top-cart-trigger"><i class="icon-shopping-cart"></i></a>
+        </div>
+        <div id="top-search">
+            <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
+            <form action="search.html" method="get">
+                <input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter..">
+            </form>
+        </div><!-- #top-search end -->
+    </nav>
+}
+else
+{
+ var user = new Model.Dao.UserDao().ViewDetail(session.UserID);
+<nav id="primary-menu">
+    <ul>
+        <li>
+            <a>Số dư: @user.Money.Value.ToString("N0") đ</a>
+        </li>
+        <li>
+            <a href="#"><div>Welcome,@session.UserName</div></a>
+            <ul>
+                <li>@Html.ActionLink("Đơn hàng", "Report", "Product")</li>
+                <li>@Html.ActionLink("Đăng xuất", "Logout", "Login")</li>
+            </ul>
+        </li>
+    </ul>
+    <div id="top-cart">
+        <a href="#" id="top-cart-trigger"><i class="icon-shopping-cart"></i><span>@Model.ToList().Count</span></a>
+        <div class="top-cart-content">
+            <div class="top-cart-title">
+                <h4>Giỏ hàng</h4>
+            </div>
+            <div class="top-cart-items">
+                @foreach (var item in Model)
+                {
+                    <div class="top-cart-item clearfix">
+                        <div class="top-cart-item-image">
+                            <a href="#"><img src="@item.Product.Image" alt="@item.Product.Name" /></a>
+                        </div>
+                        <div class="top-cart-item-desc">
+                            <a href="#">@item.Product.Name</a>
+                            <span class="top-cart-item-price">@item.Product.PromotionPice.Value.ToString("N0")</span>
+                            <span class="top-cart-item-quantity">x @item.Quantity</span>
+                        </div>
+                    </div>
+                }
+                <div class="top-cart-action clearfix">
+                    <span class="fleft top-checkout-price"></span>
+                    <a href="@Url.Action("Cart","Product")" class="button button-3d button-small nomargin fright">Xem</a>
+                </div>
+            </div>
+        </div><!-- #top-cart end -->
+    </div>
+    <div id="top-search">
+        <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
+        <form action="search.html" method="get">
+            <input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter..">
+        </form>
+    </div><!-- #top-search end -->
+</nav>
+}
+
+

@@ -27,9 +27,13 @@ namespace Model.Dao
         {
             return db.Product.ToList();
         }
-        public Product ViewDetail(int id)
+        public Product ViewDetail(long id)
         {
             return db.Product.Find(id);
+        }
+        public int CountProduct(long id)
+        {
+            return db.Product.Count(x => x.CategoryID == id);
         }
         public int Delete(int id)
         {
@@ -46,7 +50,7 @@ namespace Model.Dao
         {
             try
             {
-                if (imgsrc != null)
+                if (imgsrc != "/Content/images/hoaqua/")
                 {
                     var pro = db.Product.Find(id);
                     pro.Name = entity.Name;

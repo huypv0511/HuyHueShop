@@ -22,6 +22,14 @@ namespace Model.EF
         public virtual DbSet<Tag> Tag { get; set; }
         public virtual DbSet<User> User { get; set; }
 
+        public virtual DbSet<Role> Roles { get; set; }
+
+        public virtual DbSet<UserGroup> UserGroups { get; set; }
+
+        public virtual DbSet<Credential> Credentials { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Category>()

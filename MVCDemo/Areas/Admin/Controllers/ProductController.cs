@@ -11,7 +11,7 @@ using MVCDemo.Models;
 
 namespace MVCDemo.Areas.Admin.Controllers
 {
-    public class ProductController : Controller
+    public class ProductController : BaseController
     {
         // GET: Admin/Product
         public ActionResult Index()
@@ -31,6 +31,7 @@ namespace MVCDemo.Areas.Admin.Controllers
             var lst = dao.ListProduct();
             return View(lst);
         }
+
         public ActionResult Edit(int id)
         {
             var prod = new ProductDao().ViewDetail(id);

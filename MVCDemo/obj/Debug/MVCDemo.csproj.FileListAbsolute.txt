@@ -130,6 +130,8 @@ C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\MVCDemo\bin\Microsoft.Web.Infr
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\MVCDemo\bin\Model.dll
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\MVCDemo\bin\Newtonsoft.Json.dll
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\MVCDemo\bin\Owin.dll
+C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\MVCDemo\bin\PagedList.dll
+C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\MVCDemo\bin\PagedList.Mvc.dll
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\MVCDemo\bin\System.Web.Helpers.dll
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\MVCDemo\bin\System.Web.Mvc.dll
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\MVCDemo\bin\System.Web.Optimization.dll
@@ -138,6 +140,7 @@ C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\MVCDemo\bin\System.Web.WebPage
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\MVCDemo\bin\System.Web.WebPages.dll
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\MVCDemo\bin\System.Web.WebPages.Razor.dll
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\MVCDemo\bin\WebGrease.dll
+C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\MVCDemo\bin\Common.dll
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\MVCDemo\bin\Model.pdb
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\MVCDemo\bin\Model.dll.config
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\MVCDemo\bin\Antlr3.Runtime.pdb
@@ -156,6 +159,8 @@ C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\MVCDemo\bin\Microsoft.Owin.Sec
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\MVCDemo\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\MVCDemo\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\MVCDemo\bin\Newtonsoft.Json.xml
+C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\MVCDemo\bin\PagedList.xml
+C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\MVCDemo\bin\PagedList.Mvc.xml
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\MVCDemo\bin\System.Web.Helpers.xml
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\MVCDemo\bin\System.Web.Mvc.xml
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\MVCDemo\bin\System.Web.Optimization.xml
@@ -163,6 +168,7 @@ C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\MVCDemo\bin\System.Web.Razor.x
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\MVCDemo\bin\System.Web.WebPages.xml
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\MVCDemo\bin\System.Web.WebPages.Deployment.xml
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\MVCDemo\bin\System.Web.WebPages.Razor.xml
+C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\MVCDemo\bin\Common.pdb
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\MVCDemo\obj\Debug\MVCDemo.csprojAssemblyReference.cache
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\MVCDemo\obj\Debug\MVCDemo.csproj.CoreCompileInputs.cache
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\MVCDemo\obj\Debug\MVCDemo.csproj.CopyComplete

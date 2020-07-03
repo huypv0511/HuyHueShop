@@ -34,10 +34,10 @@
                     <ul>
                         <li class="current"><a href="#"><div>Tài khoản</div></a></li>
                         <li><a href="@Url.Action("ListProduct", "Product")"><div>Sản phẩm</div></a></li>
-                        <li><a href="portfolio-notitle.html"><div>Thể loại</div></a></li>
-                        <li><a href="portfolio-title-overlay.html"><div>Đơn hàng</div></a></li>
-                        <li><a href="portfolio-fullwidth.html"><div>Khiếu nại</div></a></li>
-                        <li><a href="portfolio-fullwidth-notitle.html"><div>Thống kê</div></a></li>
+                        <li><a href="@Url.Action("ListProductCategory","ProductCategory")"><div>Thể loại</div></a></li>
+                        <li><a href="@Url.Action("Index","Report")"><div>Đơn hàng</div></a></li>
+                        <li><a href="#"><div>Khiếu nại</div></a></li>
+                        <li><a href="#"><div>Thống kê</div></a></li>
                     </ul>
                 </nav>
 
@@ -51,7 +51,7 @@
     <section id="page-title">
 
         <div class="container clearfix">
-            <h1>Chào mừng !</h1>
+            <h1>Danh sách thành viên!</h1>
             <span>Đến với trang quản trị nơi quản lý tài nguyên website</span>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="@Url.Action("Index", "User")">Quản trị</a></li>

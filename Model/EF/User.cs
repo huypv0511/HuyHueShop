@@ -26,6 +26,9 @@ namespace Model.EF
         [StringLength(50)]
         public string Email { get; set; }
 
+        [StringLength(20)]
+        public string GroupID { get; set; }
+
         [StringLength(50)]
         public string SDT { get; set; }
 
@@ -39,6 +42,8 @@ namespace Model.EF
         public DateTime? Date { get; set; }
 
         public bool? Permission { get; set; }
+
+        public decimal? Money { get; set; }
 
         public bool? Status { get; set; }
     }

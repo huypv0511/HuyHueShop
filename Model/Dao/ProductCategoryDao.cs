@@ -19,6 +19,10 @@ namespace Model.Dao
             db.ProductCategory.Add(entity);
             db.SaveChanges();
         }
+        public ProductCategory CheckName(string name)
+        {
+            return db.ProductCategory.SingleOrDefault(x => x.Name == name);
+        }
         public List<ProductCategory> ListProductCategory()
         {
             return db.ProductCategory.ToList();
@@ -26,6 +30,32 @@ namespace Model.Dao
         public ProductCategory ViewDetail(long? id)
         {
             return db.ProductCategory.Find(id);
+        }
+        public int Delete(int id)
+        {
+            ProductCategory procate = db.ProductCategory.Find(id);
+            if (procate != null)
+            {
+                db.ProductCategory.Remove(procate);
+                return db.SaveChanges();
+            }
+            else
+                return -1;
+        }
+        public bool Update(ProductCategory entity,long? id)
+        {
+            try
+            {
+                var procate = db.ProductCategory.Find(id);
+                procate.Name = entity.Name;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }

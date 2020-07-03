@@ -17,13 +17,14 @@ namespace MVCDemo.Areas.Admin.Controllers
         {
             return View();
         }
+        [HttpPost]
         public ActionResult Login(LoginModel model)
         {
             if (ModelState.IsValid)
             {
                 var dao = new UserDao();
-                var result = dao.Login(model.UserName, Encryption.MD5Hash(model.PassWord));
-                if (result)
+                var result = dao.Login(model.UserName, Encryption.MD5Hash(model.PassWord),true);
+                if (result == 1)
                 {
                     var user = dao.GetByUserName(model.UserName);
                     var userSession = new UserLogin();
@@ -32,12 +33,30 @@ namespace MVCDemo.Areas.Admin.Controllers
                     Session.Add(CommonConstants.USER_SESSION, userSession);
                     return RedirectToAction("Index", "User");
                 }
+                else if (result == 0)
+                {
+                    ModelState.AddModelError("", "Tài khoản hoặc mật khẩu không chính xác");
+                }
+                else if (result == -1)
+                {
+                    ModelState.AddModelError("", "Tài khoản đang bị khóa");
+                }
+                else if (result == -3)
+                {
+                    ModelState.AddModelError("", "Tài khoản không  có quyển đăng nhập");
+                }
             }
             else 
             {
                 ModelState.AddModelError("","Tài khoản hoặc mật khẩu không chính xác");
             }
             return View("Index");
+        }
+
+        public ActionResult Logout()
+        {
+            Session[CommonConstants.USER_SESSION] = null;
+            return RedirectToAction("Index","Login");
         }
     }
 }

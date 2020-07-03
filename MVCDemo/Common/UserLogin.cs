@@ -10,7 +10,7 @@ namespace MVCDemo
     public class UserLogin
     {
   
-        public long UserID { set; get; }
+        public int UserID { set; get; }
         public string UserName { set; get; }
     }
 }

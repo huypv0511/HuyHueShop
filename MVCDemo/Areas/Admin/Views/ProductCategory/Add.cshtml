@@ -1,0 +1,62 @@
+﻿@model MVCDemo.Areas.Admin.Models.ProductCategoryModel
+
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Thêm</button>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-body">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Thông tin thể loại</h4>
+                </div>
+                @using (Ajax.BeginForm("Add", "ProductCategory", new AjaxOptions { HttpMethod = "POST", OnSuccess = "ShowSuccess", InsertionMode = InsertionMode.Replace }, new { id = "register-form", name = "register-form", @class = "nobottommargin", enctype = "multipart/form-data" }))
+                {
+                    <div class="modal-body">
+                        @Html.ValidationSummary(false, "", new { @class = "custom-validation-summary" })
+                        @*@Html.ValidationSummary("",true)*@
+                        <img src="" id="imgpreview" class="imgfixx" />
+                        <div class="col_full">
+                            <label for="register-form-username" id="oldUserMess">Tên thể loại:&nbsp;</label>
+                            <label for="register-form-username" id="userMess" style="color:red"></label>
+                            @Html.TextBoxFor(model => model.Name, new { id = "register-form-username", name = "register-form-username", @class = "form-control" })
+                        </div>     
+                    </div>
+                    <div class="modal-footer">
+                        <button id="success" type="submit" class="btn btn-primary">Thêm</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#register-form-name").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                return false;
+            }
+        });
+    });
+    function ShowSuccess(data) {
+        if (data.isok == true) {
+            $('#success').attr({
+                'data-notify-type': 'success',
+                'data-notify-msg': data.message
+            });
+            SEMICOLON.widget.notifications('#success');
+            window.setTimeout(function () { window.location.reload() }, 2000);
+        } else {
+            $('#success').attr({
+                'data-notify-type': 'error',
+                'data-notify-msg': data.message
+            })
+            SEMICOLON.widget.notifications('#success');
+        }
+    }
+
+
+
+</script>
