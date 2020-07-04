@@ -26,3 +26,17 @@ E:\NewGit\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
 E:\NewGit\Model\obj\Debug\Model.csproj.CopyComplete
 E:\NewGit\Model\obj\Debug\Model.dll
 E:\NewGit\Model\obj\Debug\Model.pdb
+C:\Users\huyho\OneDrive\Documents\SuperShop\Model\bin\Debug\Model.dll.config
+C:\Users\huyho\OneDrive\Documents\SuperShop\Model\bin\Debug\Model.dll
+C:\Users\huyho\OneDrive\Documents\SuperShop\Model\bin\Debug\Model.pdb
+C:\Users\huyho\OneDrive\Documents\SuperShop\Model\bin\Debug\Common.dll
+C:\Users\huyho\OneDrive\Documents\SuperShop\Model\bin\Debug\EntityFramework.dll
+C:\Users\huyho\OneDrive\Documents\SuperShop\Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\huyho\OneDrive\Documents\SuperShop\Model\bin\Debug\Common.pdb
+C:\Users\huyho\OneDrive\Documents\SuperShop\Model\bin\Debug\EntityFramework.xml
+C:\Users\huyho\OneDrive\Documents\SuperShop\Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\huyho\OneDrive\Documents\SuperShop\Model\obj\Debug\Model.csprojAssemblyReference.cache
+C:\Users\huyho\OneDrive\Documents\SuperShop\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+C:\Users\huyho\OneDrive\Documents\SuperShop\Model\obj\Debug\Model.csproj.CopyComplete
+C:\Users\huyho\OneDrive\Documents\SuperShop\Model\obj\Debug\Model.dll
+C:\Users\huyho\OneDrive\Documents\SuperShop\Model\obj\Debug\Model.pdb

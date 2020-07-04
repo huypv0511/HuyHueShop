@@ -63,6 +63,8 @@ namespace MVCDemo.Controllers
                     orderDetail.Price = item.Product.PromotionPice;
                     orderDetail.Quantity = item.Quantity;
                     detailDao.Add(orderDetail);
+                    var productViewCount = new ProductDao().UpdateViewCount(item.Product.ID,1);
+
 
                 }
                 Session[Common.CommonConstants.CART_SESSION] = null;
@@ -172,11 +174,13 @@ namespace MVCDemo.Controllers
             var a = (moneyCur.Money + money.Price);
             if (orderDao.ViewDetail(id).Status == 0)
             {
+                var checkView = new ProductDao().DownViewCount(id);
                 orderDetailDao.Delete(id);
                 orderDao.Delete(id);
                 var userMon = new User();
                 userMon.Money = a;
                 userM.UpdateMoney(userMon.Money, userID.UserID);
+               
                 return Json(new { isok = true, message = "Hoàn trả thành công." });
             }
             return Json(new { isok = false, message = "Hoàn trả thất bại." });

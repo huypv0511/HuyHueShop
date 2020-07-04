@@ -27,6 +27,23 @@ namespace Model.Dao
         {
             return db.Product.ToList();
         }
+        public bool DownViewCount(int id)
+        {
+            try
+            {
+                List<OrderDetail> pro = db.OrderDetails.Where(x => x.OrderID == id).ToList();
+                foreach (var item in pro) 
+                {
+                    var checkpro = new ProductDao().UpdateViewCount(item.ProductID,-1);
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         public Product ViewDetail(long id)
         {
             return db.Product.Find(id);
@@ -34,6 +51,21 @@ namespace Model.Dao
         public int CountProduct(long id)
         {
             return db.Product.Count(x => x.CategoryID == id);
+        }
+        public bool UpdateViewCount(long? id,int count)
+        {
+            try
+            {
+                var viewCount = db.Product.Find(id);
+                viewCount.ViewCount += count;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
         public int Delete(int id)
         {

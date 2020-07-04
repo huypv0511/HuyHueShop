@@ -44,8 +44,9 @@ namespace MVCDemo.Areas.Admin.Controllers
             // 1: Dang van chuyen
             // 2: Da hoan thanh
             // 3: Da hoan tra
-            if (orderDao.ViewDetail(id).Status == 2)
+            if (orderDao.ViewDetail(id).Status == 1)
             {
+                var checkView = new ProductDao().DownViewCount(id);
                 orderDetailDao.Delete(id);
                 orderDao.Delete(id);
                 return Json(new { isok = true, message = "Xóa thành công." });
