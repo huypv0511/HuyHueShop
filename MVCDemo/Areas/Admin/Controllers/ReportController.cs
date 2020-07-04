@@ -30,7 +30,7 @@ namespace MVCDemo.Areas.Admin.Controllers
                 cart.Quantity = quantity;
                 lst.Add(cart);
             }
-
+            ViewBag.OrderId = id;
             return View(lst);
         }
         [HttpDelete]
@@ -55,6 +55,20 @@ namespace MVCDemo.Areas.Admin.Controllers
                 return Json(new { isok = false, message = "Không thể xóa đơn hàng đang xử lý." });
             }
             return Json(new { isok = false, message = "Xóa thất bại." });
+        }
+
+        [HttpPost]
+        public ActionResult Finish(int id)
+        {
+            var dao = new OrderDao().Update(id, 1);        
+            return Json(new { isok = true, message = "Đã hoàn thành." });
+        }
+
+        [HttpPost]
+        public ActionResult Revert(int id)
+        {
+            var dao = new OrderDao().Update(id, 0);
+            return Json(new { isok = true, message = "Đã thay đổi trạng thái." });
         }
     }
 }

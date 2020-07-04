@@ -12,3 +12,17 @@ C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\Model\obj\Debug\Model.csproj.C
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\Model\obj\Debug\Model.csproj.CopyComplete
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\Model\obj\Debug\Model.dll
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\Model\obj\Debug\Model.pdb
+E:\NewGit\Model\bin\Debug\Model.dll.config
+E:\NewGit\Model\bin\Debug\Model.dll
+E:\NewGit\Model\bin\Debug\Model.pdb
+E:\NewGit\Model\bin\Debug\Common.dll
+E:\NewGit\Model\bin\Debug\EntityFramework.dll
+E:\NewGit\Model\bin\Debug\EntityFramework.SqlServer.dll
+E:\NewGit\Model\bin\Debug\Common.pdb
+E:\NewGit\Model\bin\Debug\EntityFramework.xml
+E:\NewGit\Model\bin\Debug\EntityFramework.SqlServer.xml
+E:\NewGit\Model\obj\Debug\Model.csprojAssemblyReference.cache
+E:\NewGit\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+E:\NewGit\Model\obj\Debug\Model.csproj.CopyComplete
+E:\NewGit\Model\obj\Debug\Model.dll
+E:\NewGit\Model\obj\Debug\Model.pdb

@@ -162,6 +162,7 @@
                                 <input type="text" class="form-control" name="adrress" id="exampleInputAddress">
                             </div>
                             <button type="submit" id="success" class="button button-border button-rounded button-fill fill-from-right button-green"><span>Thanh toán</span></button>
+                            <button type="button" onclick="soqa()" class="button button-border button-rounded button-fill fill-from-left button-black"><span>Trở lại</span></button>
                         }
                     </div>
 
@@ -205,7 +206,7 @@
                 'data-notify-msg': data.message
             });
             SEMICOLON.widget.notifications('#success');
-            window.setTimeout(function () { window.location.href = "@Url.Action("Report","Product")"; }, 2000);
+            window.setTimeout(function () { window.location.href = "@Url.Action("Report","Product")"; }, 1000);
         } else {
             $('#success').attr({
                 'data-notify-type': 'error',
@@ -213,5 +214,9 @@
             })
             SEMICOLON.widget.notifications('#success');
         }
+    }
+
+    function soqa() {
+        window.history.go(-1);
     }
 </script>

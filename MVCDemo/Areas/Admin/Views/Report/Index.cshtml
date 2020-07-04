@@ -94,17 +94,13 @@
                                             @if (item.Status == 0)
                                             {
                                                 <td><i class="icon-repeat"></i>&nbsp;<span style="color:orange">Đang xử lý</span></td>
-                                            }
+                                            }       
                                             else if (item.Status == 1)
                                             {
-                                                <td><i class="icon-repeat"></i>&nbsp;<span style="color:yellow">Đang giao hàng</span></td>
-                                            }
-                                            else if (item.Status == 2)
-                                            {
-                                                <td><i class="icon-repeat"></i>&nbsp;<span style="color:yellow">Đã hoàn thành</span></td>
+                                                <td><i class="icon-check"></i>&nbsp;<span style="color:green">Đã hoàn thành</span></td>
                                             }
                                             <td>
-                                                <a href="/Product/DetailReport/@item.ID">Chi tiết</a>|
+                                                <a href="/Admin/Report/DetailReport/@item.ID">Chi tiết</a>|
                                                 @Ajax.ActionLink("Xóa", "DeleteReportAdmin", new { @id = item.ID }, new AjaxOptions
                                            {
                                                Confirm = "Bạn có chắc chắn muốn hoàn trả đơn hàng??",
@@ -140,7 +136,7 @@
                 'data-notify-msg': data.message
             })
             SEMICOLON.widget.notifications('#deleteReport');
-            window.setTimeout(function () { window.location.reload() }, 2000);
+            window.setTimeout(function () { window.location.reload() }, 1000);
         }
         else if(data.isok == false){
             $('#deleteReport').attr({

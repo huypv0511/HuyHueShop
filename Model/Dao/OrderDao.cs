@@ -32,6 +32,21 @@ namespace Model.Dao
         {
             return db.Orders.Find(id);
         }
+        public bool Update(int id, int Status)
+        {
+            try
+            {
+                var order = db.Orders.Find(id);
+                order.Status = Status;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return true;
+            }
+        }
         public int Delete(int id)
         {
             Order order = db.Orders.Find(id);

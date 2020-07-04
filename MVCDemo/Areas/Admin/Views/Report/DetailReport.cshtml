@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "DetailReport";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    var a = ViewBag.OrderId;
 }
 
     <body class="stretched">
@@ -133,9 +134,10 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-8 col-8 nopadding">
-                                                @*<button onclick="DeleteAll()" class="button button-border button-rounded button-fill fill-from-bottom button-red fright"><span>Xóa giỏ hàng</span></button>
-                                                <button onclick="Continuee()" class="button button-border button-rounded button-fill fill-from-top button-blue fright"><span>Tiếp tục mua</span></button>*@
                                                 <button onclick="Back()" id="btnProceed" class="button button-border button-rounded button-fill fill-from-right button-black fright"><span>Quay lại</span></button>
+                                                <button onclick="Revert(@a)" id="btnRevert" class="button button-border button-rounded button-fill fill-from-left button-brown fright"><span>Thay đổi</span></button>
+                                                <button onclick="Finish(@a)" id="btnFinish" class="button button-border button-rounded button-fill fill-from-bottom button-green fright"><span>Hoàn thành</span></button>
+
                                             </div>
                                         </div>
                                     </td>
@@ -149,7 +151,7 @@
         </section>
     </body>
 
-<script type="text/javascript">
+    <script type="text/javascript">
     $(document).ready(function () {
         $('#datatable1').dataTable();
         var listAmount = $('.pricePro');
@@ -170,5 +172,46 @@
         window.history.go(-1);
     }
 
+    function Finish(id)
+    {
+        $.ajax({
+            url: '/Report/Finish',
+            data: {id :id},
+            dataType: 'json',
+            type: 'POST',
+            success: function (res) {
+                if (res.isok == true)
+                {
+                    $('#btnFinish').attr({
+                        'data-notify-type': 'success',
+                        'data-notify-msg': res.message
+                    })
+                    SEMICOLON.widget.notifications('#btnFinish');
+                    window.setTimeout(function () { window.location.href = "@Url.Action("Index","Report")"; }, 1000);
+                }
+            }
+        })
+    }
+    function Revert(id) {
+        $.ajax({
+            url: '/Report/Revert',
+            data: {id :id},
+            dataType: 'json',
+            type: 'POST',
+            success: function (res) {
+                if (res.isok == true)
+                {
+                    $('#btnFinish').attr({
+                        'data-notify-type': 'success',
+                        'data-notify-msg': res.message
+                    })
+                    SEMICOLON.widget.notifications('#btnFinish');
+                    window.setTimeout(function () { window.location.href = "@Url.Action("Index","Report")"; }, 1000);
+                }
+            }
+        })
+    }
 
-</script>
+
+
+    </script>

@@ -3,3 +3,9 @@ C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\Common\bin\Debug\Common.pdb
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\Common\obj\Debug\Common.dll
 C:\Users\admin\Desktop\WEB\Git\OnlineShop\MVCDemo\Common\obj\Debug\Common.pdb
+E:\NewGit\Common\bin\Debug\Common.dll
+E:\NewGit\Common\bin\Debug\Common.pdb
+E:\NewGit\Common\obj\Debug\Common.csprojAssemblyReference.cache
+E:\NewGit\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+E:\NewGit\Common\obj\Debug\Common.dll
+E:\NewGit\Common\obj\Debug\Common.pdb
